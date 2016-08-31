@@ -207,7 +207,7 @@ public class Path_AStar
         return path.ToList();
     }
 
-    private float Heuristic_cost_estimate(Path_Node<Tile> a, Path_Node<Tile> b)
+    private float Heuristic(Node a, Node b)
     {
         if (b == null)
         {

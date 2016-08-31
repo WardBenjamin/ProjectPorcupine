@@ -290,7 +290,7 @@ public class Character : IXmlSerializable, ISelectable, IContextActionProvider
         DestTile = MyJob.tile;
 
         // If the dest tile does not have neighbours that are walkable it's very likable that they can't be walked to.
-        if (DestTile.GetNeighbours().Any((tile) => { return tile.MovementCost > 0; }) == false)
+        if (DestTile.GetNeighbors().Any((tile) => { return tile.MovementCost > 0; }) == false)
         {
             Debug.ULogChannel("Character", "No neighbouring floor tiles! Abandoning job.");
             AbandonJob(false);
@@ -505,7 +505,7 @@ public class Character : IXmlSerializable, ISelectable, IContextActionProvider
         // If the dest tile does not have neighbours that are walkable it's very likely that they can't be walked to
         if (DestTile != null)
         {
-            if (DestTile.GetNeighbours().Any((tile) => { return tile.MovementCost > 0; }) == false)
+            if (DestTile.GetNeighbors().Any((tile) => { return tile.MovementCost > 0; }) == false)
             {
                 Debug.ULogChannel("Character", "No neighbouring floor tiles! Abandoning job.");
                 AbandonJob(false);
@@ -827,7 +827,7 @@ public class Character : IXmlSerializable, ISelectable, IContextActionProvider
                 pathAStar = new Path_AStar(World.Current, CurrTile, DestTile);
                 if (pathAStar.Length() == 0)
                 {
-                    Debug.ULogErrorChannel("Character", "Path_AStar returned no path to destination!");
+                    Debug.ULogErrorChannel("Character", "A* returned no path to destination!");
                     AbandonJob(false);
                     return;
                 }
@@ -869,6 +869,8 @@ public class Character : IXmlSerializable, ISelectable, IContextActionProvider
         {
             CharFacing = Facing.SOUTH;
         }
+
+        // TODO: Use same distance calc as pathfinding
 
         // At this point we should have a valid nextTile to move to.
         // What's the total distance from point A to point B?

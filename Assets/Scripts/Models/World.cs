@@ -33,9 +33,6 @@ public class World : IXmlSerializable
     // Store all temperature information
     public Temperature temperature;
 
-    // The pathfinding graph used to navigate our world map.
-    public Path_TileGraph tileGraph;
-
     public Dictionary<string, Furniture> furniturePrototypes;
     public Dictionary<string, Job> furnitureJobPrototypes;
     public Dictionary<string, Need> needPrototypes;
@@ -52,6 +49,8 @@ public class World : IXmlSerializable
 
     // A two-dimensional array to hold our tile data.
     private Tile[,] tiles;
+
+    private Pathfinding.TileGraph tileGraph;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="World"/> class.

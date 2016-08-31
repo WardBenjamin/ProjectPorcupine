@@ -207,18 +207,18 @@ public class Tile : IXmlSerializable, ISelectable, IContextActionProvider
     public bool IsNeighbour(Tile tile, bool diagOkay = false)
     {
         // Check to see if we have a difference of exactly ONE between the two
-        // tile coordinates.  Is so, then we are vertical or horizontal neighbours.
+        // tile coordinates.  Is so, then we are vertical or horizontal neighbors.
         return
             Math.Abs(X - tile.X) + Math.Abs(Y - tile.Y) == 1 || // Check hori/vert adjacency
         (diagOkay && Math.Abs(X - tile.X) == 1 && Math.Abs(Y - tile.Y) == 1); // Check diag adjacency
     }
 
     /// <summary>
-    /// Gets the neighbours.
+    /// Gets the neighbors.
     /// </summary>
-    /// <returns>The neighbours.</returns>
+    /// <returns>The neighbors.</returns>
     /// <param name="diagOkay">Is diagonal movement okay?.</param>
-    public Tile[] GetNeighbours(bool diagOkay = false)
+    public Tile[] GetNeighbors(bool diagOkay = false)
     {
         Tile[] ns = diagOkay == false ? new Tile[4] : new Tile[8];
 
@@ -249,9 +249,9 @@ public class Tile : IXmlSerializable, ISelectable, IContextActionProvider
     /// <summary>
     /// If one of the 8 neighbouring tiles is of TileType type then this returns true.
     /// </summary>
-    public bool HasNeighboursOfType(TileType tileType)
+    public bool HasNeighborsOfType(TileType tileType)
     {
-        return GetNeighbours(true).Any(tile => tile.Type == tileType);
+        return GetNeighbors(true).Any(tile => tile.Type == tileType);
     }
 
     public XmlSchema GetSchema()

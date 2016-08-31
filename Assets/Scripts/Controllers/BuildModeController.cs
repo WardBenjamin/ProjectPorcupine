@@ -190,7 +190,7 @@ public class BuildModeController
                 // check if this is a WALL neighbouring a pressured and pressureless environ & if so bail
                 if (t.Furniture.HasTypeTag("Wall"))
                 {
-                    Tile[] neighbors = t.GetNeighbours(); // diagOkay??
+                    Tile[] neighbors = t.GetNeighbors(); // diagOkay??
                     int pressuredNeighbors = 0;
                     int vacuumNeighbors = 0;
                     foreach (Tile neighbor in neighbors)

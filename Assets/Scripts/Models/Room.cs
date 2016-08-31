@@ -42,7 +42,7 @@ public class Room : IXmlSerializable
     public static void EqualiseGasByTile(Tile tile, float leakFactor)
     {
         List<Room> roomsDone = new List<Room>();
-        foreach (Tile t in tile.GetNeighbours())
+        foreach (Tile t in tile.GetNeighbors())
         {
             // Skip tiles with a null room (i.e. outside).
             // TODO: Verify that gas still leaks to the outside
@@ -85,7 +85,7 @@ public class Room : IXmlSerializable
             // that is potentially dividing this old room into as many as four new rooms.
 
             // Try building new rooms for each of our NESW directions.
-            foreach (Tile t in sourceTile.GetNeighbours())
+            foreach (Tile t in sourceTile.GetNeighbors())
             {
                 if (t.Room != null && (onlyIfOutside == false || t.Room.IsOutsideRoom()))
                 {
@@ -122,7 +122,7 @@ public class Room : IXmlSerializable
 
             // You need to delete the surrounding rooms so a new room can be created
             // This doesn't work for the gas calculations and needs to be fixed.
-            foreach (Tile t in sourceTile.GetNeighbours())
+            foreach (Tile t in sourceTile.GetNeighbors())
             {
                 if (t.Room != null && (onlyIfOutside == false || t.Room.IsOutsideRoom()))
                 {
@@ -376,7 +376,7 @@ public class Room : IXmlSerializable
 
                 newRoom.AssignTile(t);
 
-                Tile[] ns = t.GetNeighbours();
+                Tile[] ns = t.GetNeighbors();
                 foreach (Tile t2 in ns)
                 {
                     if (t2 == null || t2.Type == TileType.Empty)
