@@ -11,6 +11,7 @@ using System.Linq;
 using Priority_Queue;
 using UnityEngine;
 
+/*
 public class Path_AStar
 {
     private Queue<Tile> path;
@@ -68,13 +69,13 @@ public class Path_AStar
          * Mostly following this pseusocode:
          * https://en.wikipedia.org/wiki/A*_search_algorithm
          */
-        HashSet<Path_Node<Tile>> closedSet = new HashSet<Path_Node<Tile>>();
+        //HashSet<Path_Node<Tile>> closedSet = new HashSet<Path_Node<Tile>>();
 
         /*
          * List<Path_Node<Tile>> openSet = new List<Path_Node<Tile>>();
          *        openSet.Add( start );
          */
-
+         /*
         PathfindingPriorityQueue<Path_Node<Tile>> openSet = new PathfindingPriorityQueue<Path_Node<Tile>>();
         openSet.Enqueue(start, 0);
 
@@ -261,7 +262,7 @@ public class Path_AStar
             *    key => value relation is real saying
             *    some_node => we_got_there_from_this_node
             */
-
+/*
             current = came_From[current];
             total_path.Enqueue(current.data);
         }
@@ -271,3 +272,4 @@ public class Path_AStar
         path = new Queue<Tile>(total_path.Reverse());
     }
 }
+*/

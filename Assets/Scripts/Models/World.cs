@@ -50,7 +50,7 @@ public class World : IXmlSerializable
     // A two-dimensional array to hold our tile data.
     private Tile[,] tiles;
 
-    private Pathfinding.TileGraph tileGraph;
+    public Pathfinding.TileGraph TileGraph;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="World"/> class.
@@ -343,9 +343,9 @@ public class World : IXmlSerializable
                 // of exactly 1 doesn't impact our pathfinding system, so we can
                 // occasionally avoid invalidating pathfinding graphs.
                 // InvalidateTileGraph();    // Reset the pathfinding system
-                if (tileGraph != null)
+                if (TileGraph != null)
                 {
-                    tileGraph.RegenerateGraphAtTile(t);
+                    TileGraph.RegenerateGraphAtTile(t);
                 }
             }
         }
@@ -357,7 +357,7 @@ public class World : IXmlSerializable
     // means that our old pathfinding info is invalid.
     public void InvalidateTileGraph()
     {
-        tileGraph = null;
+        TileGraph = null;
     }
     
     public bool IsFurniturePlacementValid(string furnitureType, Tile t)
@@ -966,9 +966,9 @@ public class World : IXmlSerializable
         OnTileChanged(t);
 
         // InvalidateTileGraph();
-        if (tileGraph != null)
+        if (TileGraph != null)
         {
-            tileGraph.RegenerateGraphAtTile(t);
+            TileGraph.RegenerateGraphAtTile(t);
         }
     }
 

@@ -298,7 +298,7 @@ public class Character : IXmlSerializable, ISelectable, IContextActionProvider
         }
 
         MyJob.OnJobStopped += OnJobStopped;
-
+        Pathfinder.FindPath(World.Current.TileGraph, new Pathfinding.Node(CurrTile), new Pathfinding.Node(DestTile));
         pathAStar = new Path_AStar(World.Current, CurrTile, DestTile);
 
         if (pathAStar != null && pathAStar.Length() == 0)

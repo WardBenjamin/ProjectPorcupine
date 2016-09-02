@@ -9,7 +9,7 @@ namespace Pathfinding
 
         public BreadCrumb prev;
         public BreadCrumb next;
-        public int cost = Int32.MaxValue;
+        public float cost = float.MaxValue;
         public bool onClosedList = false;
         public bool onOpenList = false;
 
@@ -24,13 +24,13 @@ namespace Pathfinding
             parent.prev = this;
         }
 
-        //Overrides default Equals so we check on position instead of object memory location
+        // Overrides default Equals so we check on position instead of object memory location
         public override bool Equals(object obj)
         {
             return (obj is BreadCrumb) && this.Equals((BreadCrumb)obj);
         }
 
-        //Faster Equals for if we know something is a BreadCrumb
+        // Faster Equals for if we know something is a BreadCrumb
         public bool Equals(BreadCrumb breadcrumb)
         {
             return Node.Equals(breadcrumb.Node);
@@ -38,7 +38,7 @@ namespace Pathfinding
 
         public override int GetHashCode()
         {
-            return position.GetHashCode();
+            return base.GetHashCode();
         }
 
         #region IComparable<> interface

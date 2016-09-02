@@ -4,11 +4,25 @@ using Pathfinding;
 
 public static class Pathfinder
 {
-    public delegate float PathfindingHeuristic(int x1, int y1, int x2, int y2);
+    public delegate float PathfindingHeuristic(int curX, int curY, int goalX, int goalY);
 
-    public static PathfindingHeuristic Heuristic;
+    public static PathfindingHeuristic Heuristic = ManhattenDistance;
 
-    public float ManhattenDistance(int x1, int y1, int x2, int y2)
+    /// <summary>
+    /// Manhatten distance, equal to the distance moving on a 4-direction-restricted grid.
+    /// </summary>
+    public static float ManhattenDistance(int curX, int curY, int goalX, int goalY)
+    {
+        return Math.Abs(curX - goalX) + Math.Abs(curY - goalY);
+    }
+
+    /// <summary>
+    /// Euclidean distance, equal to the absolute distance at any angle. Most accurate but very slow to calculate, and requires A* search more tiles.
+    /// </summary>
+    public static float EuclideanDistance(int curX, int curY, int goalX, int goalY)
+    {
+        return Mathf.Sqrt(Mathf.Pow(curX - goalX, 2) + Mathf.Pow(curY - goalY, 2));
+    }
 
     private static MinHeap<BreadCrumb> openList;
 
@@ -82,9 +96,9 @@ public static class Pathfinder
                     }
 
                     // FIXME: Use Mathf
-                    float heuristic = DistanceHeuristic(crumb.Node.X, crumb.Node.Y, end.X, end.Y);
+                    float heuristic = Heuristic(crumb.Node.X, crumb.Node.Y, end.X, end.Y);
                     
-                    cost = current.cost + diff + heuristic;
+                    cost = current.cost + heuristic;
 
                     if (cost < crumb.cost)
                     {

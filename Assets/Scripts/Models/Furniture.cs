@@ -634,9 +634,9 @@ public class Furniture : IXmlSerializable, ISelectable, IContextActionProvider, 
 
         ////World.current.InvalidateTileGraph();
 
-        if (World.Current.tileGraph != null)
+        if (World.Current.TileGraph != null)
         {
-            World.Current.tileGraph.RegenerateGraphAtTile(Tile);
+            World.Current.TileGraph.RegenerateGraphAtTile(Tile);
         }
 
         // We should inform our neighbours that they have just lost a

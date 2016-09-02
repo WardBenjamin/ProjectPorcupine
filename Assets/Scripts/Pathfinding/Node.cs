@@ -31,11 +31,10 @@ namespace Pathfinding
         {
             return node.Tile.X == this.Tile.Y && node.Tile.Y == this.Tile.Y;
         }
-    }
 
-    public class NodeConnection
-    {
-        public Node Node;
-        public float Cost;
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
